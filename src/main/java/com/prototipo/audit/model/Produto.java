@@ -1,5 +1,7 @@
 package com.prototipo.audit.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -23,4 +25,5 @@ public class Produto {
 	private Long id;
 	private String nome;
 	private String descricao;
+	private BigDecimal preco;
 }
