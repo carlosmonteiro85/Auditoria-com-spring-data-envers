@@ -21,7 +21,7 @@ public class UsuarioRevEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@RevisionNumber
-	private Long id;
+	private Long rev;
 	
 	@RevisionTimestamp
 	private Long timestemp;
