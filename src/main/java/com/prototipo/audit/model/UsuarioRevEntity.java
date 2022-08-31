@@ -17,7 +17,6 @@ import lombok.Data;
 @Table(name = "usuario_rev_entity")
 @RevisionEntity(UsuarioListener.class)
 public class UsuarioRevEntity {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@RevisionNumber

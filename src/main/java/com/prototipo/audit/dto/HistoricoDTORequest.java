@@ -7,7 +7,7 @@ import com.prototipo.audit.model.Produto;
 import lombok.Data;
 
 @Data
-public class ProdutoDTO {
+public class HistoricoDTORequest {
 	private String nome;
 	private String descricao;
 	private BigDecimal preco;
@@ -20,7 +20,7 @@ public class ProdutoDTO {
 		return produto;
 	}
 	
-	public void copy(ProdutoDTO produtoDTO, Produto produto) {
+	public void copy(HistoricoDTORequest produtoDTO, Produto produto) {
 		produto.setDescricao(produtoDTO.getDescricao());
 		produto.setNome(produtoDTO.getNome());
 		produto.setPreco(produtoDTO.getPreco());
