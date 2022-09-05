@@ -10,9 +10,7 @@
 * Para os testes unitarios foi utilizado o JUNIT 5.
 * Para a auditoria o projeto utiliza o Spring data Envers da biblioteca spring-data-envers .
 
-## Executando o projeto
-
-### Execultar o projeto clonado pelo git
+## Execultar o projeto clonado pelo git
 
 * Para  executar o projeto, após ser clonado o repositótio, é necessário executar o arquivo "AuditApplication.java", como "Java application".
 * Ou executando o comando ./mvnw spring-boot:run na pasta raiz do projeto.
