@@ -12,6 +12,7 @@ public class HistoricoDTORequest {
 	private String descricao;
 	private BigDecimal preco;
 	
+	// este metodo pode ser implementado um model mapper
 	public Produto toModel() {
 		Produto produto = new Produto();
 		produto.setDescricao(descricao);

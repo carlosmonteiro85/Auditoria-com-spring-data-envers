@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prototipo.audit.ProdutoService;
+import com.prototipo.audit.dto.HistoricoDTOResponse;
 import com.prototipo.audit.dto.ProdutoDTORequest;
-import com.prototipo.audit.model.HistoricoAlteracaoProduto;
 import com.prototipo.audit.model.Produto;
+import com.prototipo.audit.model.ProdutoAudit;
+import com.prototipo.audit.service.ProdutoAuditService;
+import com.prototipo.audit.service.ProdutoService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +30,7 @@ import lombok.RequiredArgsConstructor;
 public class ProdutoController {
 
 	private final ProdutoService service;
+	private final ProdutoAuditService produtoAuditservice;
 
 	@PostMapping
 	public ResponseEntity<Produto> saveUnidade(@RequestBody ProdutoDTORequest request) {
@@ -53,7 +56,7 @@ public class ProdutoController {
 	}
 	
 	@GetMapping(params = { "page", "size" }, value = "filter")
-	public ResponseEntity<List<HistoricoAlteracaoProduto>> findPaginated(
+	public ResponseEntity<List<ProdutoAudit>> findPaginated(
 			@RequestParam(value = "page", defaultValue = "0", required = false) int page, 
 			@RequestParam(value = "size", defaultValue = "10", required = false) int size,
 			@RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy,
@@ -63,7 +66,7 @@ public class ProdutoController {
 			@RequestParam(value = "descricao", required = false) String descricao,
 			@RequestParam(value = "preco",  required = false) BigDecimal preco) {
 		
-		List<HistoricoAlteracaoProduto> historico = null;
+		List<ProdutoAudit> historico = null;
 		
 		try {
 			historico = service.getAllUnidadesComFiltro(page, size, sortBy, sortDir, id, nome, descricao, preco );
@@ -73,5 +76,8 @@ public class ProdutoController {
 	    return ResponseEntity.ok(historico);
 	}
 	
-	
+	@GetMapping(path = "historico/{idProduto}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<HistoricoDTOResponse> buscarHistoricoAlteracao(@PathVariable Long idProduto) {
+		return produtoAuditservice.buscarHistorico(idProduto);
+	}
 }

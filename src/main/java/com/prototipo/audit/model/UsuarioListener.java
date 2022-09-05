@@ -4,6 +4,9 @@ import org.hibernate.envers.RevisionListener;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/*
+ * Listener com o objetivo de obter o usuário logado e inserilo na auditoria
+ * */
 public class UsuarioListener implements RevisionListener {
 
 	@Override
